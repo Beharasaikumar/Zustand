@@ -125,7 +125,7 @@ export default function PersonalDetails() {
         </div>
       </div>
 
-      {/* Gender, Nationality, Aadhaar, Mobile */}
+     
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
         <div>
           <label className="font-semibold text-sm block mb-1">Gender*:</label>
@@ -182,7 +182,7 @@ export default function PersonalDetails() {
         </div>
       </div>
 
-      {/* Email, Passport */}
+       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
         <div>
           <label className="font-semibold text-sm block mb-1">Email*:</label>
@@ -238,7 +238,7 @@ export default function PersonalDetails() {
         </div>
       </div>
 
-      {/* Blood Group */}
+     
       <div className="mb-4">
         <label className="font-semibold text-sm block mb-1">Blood Group*:</label>
         <select
@@ -259,7 +259,7 @@ export default function PersonalDetails() {
         </select>
       </div>
 
-      {/* Present Address */}
+      
       <div className="mb-4">
         <h3 className="text-md font-semibold mb-2">Present Address:</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -320,7 +320,7 @@ export default function PersonalDetails() {
         </div>
       </div>
 
-      {/* Same Address Checkbox */}
+       
       <div className="mb-4">
         <label className="flex items-center text-sm">
           <input
@@ -333,7 +333,7 @@ export default function PersonalDetails() {
         </label>
       </div>
 
-      {/* Permanent Address */}
+    
       <div className="mb-6">
         <h3 className="text-md font-semibold mb-2">Permanent Address:</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -400,7 +400,7 @@ export default function PersonalDetails() {
         </div>
       </div>
 
-      {/* Submit */}
+      
       <button
         onClick={() => setStep(2)}
         className="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700"

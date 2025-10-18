@@ -9,14 +9,15 @@ export default function PreviewApplication() {
     visaEntryForm, 
     paymentDetails, 
     uploadDocuments,
-    setStep
+    setStep,
+    resetForm
   } = useFormStore();
 
   return (
     <div className="max-w-[90%] mx-auto p-6 space-y-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold text-teal-700 mb-4">Application Recap</h2>
 
-    
+      
       <section className="border p-4 rounded-md">
         <h3 className="text-lg font-semibold mb-2 text-teal-600">Personal Details</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
@@ -38,8 +39,7 @@ export default function PreviewApplication() {
           <strong>Permanent Address:</strong> {personalDetails.permanentHouseNoFlatNo}, {personalDetails.permanentVillageWardName}, {personalDetails.permanentLandmark}, {personalDetails.permanentDistrict}, {personalDetails.permanentState}, {personalDetails.permanentPinCode}
         </div>
       </section>
-
-     
+ 
       <section className="border p-4 rounded-md">
         <h3 className="text-lg font-semibold mb-2 text-teal-600">Medical Qualification</h3>
         <div className="text-sm">
@@ -64,7 +64,7 @@ export default function PreviewApplication() {
         </div>
       </section>
 
-     
+      
       <section className="border p-4 rounded-md">
         <h3 className="text-lg font-semibold mb-2 text-teal-600">Educational Details</h3>
         <table className="w-full border border-gray-300 text-sm">
@@ -91,8 +91,8 @@ export default function PreviewApplication() {
         </table>
         <p className="mt-2"><strong>Region:</strong> {educationInfo.region}</p>
       </section>
- 
 
+   
       <section className="border p-4 rounded-md">
         <h3 className="text-lg font-semibold mb-2 text-teal-600">Visa Details</h3>
         <div className="text-sm">
@@ -105,8 +105,7 @@ export default function PreviewApplication() {
           )}
         </div>
       </section>
-
-      {/* Payment */}
+ 
       <section className="border p-4 rounded-md">
         <h3 className="text-lg font-semibold mb-2 text-teal-600">Payment Details</h3>
         <div className="text-sm">
@@ -117,7 +116,7 @@ export default function PreviewApplication() {
         </div>
       </section>
 
-     
+      
       <section className="border p-4 rounded-md">
         <h3 className="text-lg font-semibold mb-2 text-teal-600">Uploaded Documents</h3>
         <ul className="list-disc list-inside text-sm">
@@ -131,7 +130,8 @@ export default function PreviewApplication() {
         </ul>
       </section>
 
-       <div className="flex justify-between mt-6">
+       
+      <div className="flex justify-between mt-6">
         <button
           onClick={() => setStep(6)} 
           className="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700"
@@ -139,7 +139,11 @@ export default function PreviewApplication() {
           Back
         </button>
         <button
-          onClick={() => alert("Final Submission done!")}
+          onClick={() => {
+            alert("Final Submission done!");
+            resetForm();
+            setStep(1);
+          }}
           className="bg-yellow-500 text-black px-4 py-2 rounded-md hover:bg-yellow-600"
         >
           Submit Application

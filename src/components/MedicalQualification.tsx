@@ -153,7 +153,7 @@ export default function MedicalQualification() {
         </div>
       </section>
 
-      {/* --- Navigation Buttons --- */}
+      
       <div className="flex justify-between mt-8">
         <button
           onClick={handleBack}

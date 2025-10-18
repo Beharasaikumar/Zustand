@@ -72,7 +72,7 @@ export default function VisaDetailsForm() {
     const visaYears = visaEntryForm.visaEntriesByYear || [];
     const currentYearData = visaYears[selectedYear] || { semesters: [], totalStayAbroad: "", totalStayIndia: "" };
 
-    // Safe access to semesters
+ 
     const getSemester = (semIndex: number) => {
         const sem = currentYearData.semesters?.[semIndex];
         return sem || {
@@ -87,7 +87,7 @@ export default function VisaDetailsForm() {
     const sem1 = getSemester(0);
     const sem2 = getSemester(1);
 
-    // Handlers
+    
     const addEntry = (semesterIndex: number) => {
         const updatedSemesters = [...(currentYearData.semesters || [])];
         if (!updatedSemesters[semesterIndex]) updatedSemesters[semesterIndex] = getSemester(semesterIndex);
@@ -302,7 +302,7 @@ export default function VisaDetailsForm() {
                 </div>
             </div>
 
-            {/* Online Study */}
+            
             <div className="mb-4 p-4 border rounded">
                 <label className="font-semibold text-sm block mb-1">
                     Period of online study during staying in India (Details of the semester and number of months):
@@ -482,8 +482,7 @@ export default function VisaDetailsForm() {
                 </div>
             )}
 
-            {/* Navigation - Only if no visa entry form or at bottom */}
-            {!internship.isAbroad && (
+             {!internship.isAbroad && (
                 <div className="flex justify-between mt-6">
                     <button
                         onClick={() => setStep(4)}

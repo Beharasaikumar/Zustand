@@ -59,31 +59,31 @@ export default function EducationalDetails() {
                 <tr key={index} className="even:bg-gray-50">
                   <td className="border p-2 text-center font-medium">{index + 1}</td>
                   <td className="border p-2 text-center font-medium">{item.className}</td>
-                 <td className="border border-gray-300 p-2">
-  <select
-    value={currentItem.year || ''}
-    onChange={(e) => handleChange(index, "year", e.target.value)}
-    className="w-full border border-gray-300 rounded-md p-1 focus:ring-1 focus:ring-blue-500 focus:outline-none text-sm appearance-none bg-white"
-  >
-    <option value="">Select Your year</option>
-    {['2013','2014','2015','2016','2017','2018','2019','2020'].map(y => (
-      <option key={y} value={y}>{y}</option>
-    ))}
-  </select>
-</td>
+                  <td className="border border-gray-300 p-2">
+                    <select
+                      value={currentItem.year || ''}
+                      onChange={(e) => handleChange(index, "year", e.target.value)}
+                      className="w-full border border-gray-300 rounded-md p-1 focus:ring-1 focus:ring-blue-500 focus:outline-none text-sm appearance-none bg-white"
+                    >
+                      <option value="">Select Your year</option>
+                      {['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'].map(y => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
+                  </td>
 
-<td className="border border-gray-300 p-2">
-  <select
-    value={currentItem.state || ''}
-    onChange={(e) => handleChange(index, "state", e.target.value)}
-    className="w-full border border-gray-300 rounded-md p-1 focus:ring-1 focus:ring-blue-500 focus:outline-none text-sm appearance-none bg-white"
-  >
-    <option value="">Select Your state</option>
-    {['Andhra Pradesh', 'Telangana', 'Karnataka', 'Tamil Nadu'].map(s => (
-      <option key={s} value={s}>{s}</option>
-    ))}
-  </select>
-</td>
+                  <td className="border border-gray-300 p-2">
+                    <select
+                      value={currentItem.state || ''}
+                      onChange={(e) => handleChange(index, "state", e.target.value)}
+                      className="w-full border border-gray-300 rounded-md p-1 focus:ring-1 focus:ring-blue-500 focus:outline-none text-sm appearance-none bg-white"
+                    >
+                      <option value="">Select Your state</option>
+                      {['Andhra Pradesh', 'Telangana', 'Karnataka', 'Tamil Nadu'].map(s => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </td>
 
                   <td className="border p-2">
                     <select
@@ -171,13 +171,13 @@ export default function EducationalDetails() {
           onClick={() => setStep(3)}
           className="bg-teal-600 text-white px-6 py-2 rounded-md hover:bg-teal-700 transition text-sm"
         >
-           Back
+          Back
         </button>
         <button
           onClick={() => setStep(5)}
           className="bg-teal-600 text-white px-6 py-2 rounded-md hover:bg-teal-700 transition text-sm"
         >
-          Save & Continue 
+          Save & Continue
         </button>
       </div>
     </div>

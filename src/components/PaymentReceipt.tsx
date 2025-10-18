@@ -21,7 +21,7 @@ const PaymentReceipt: React.FC = () => {
           Payment Receipt
         </h2>
 
-        {/* Receipt Table */}
+        
         <div className="border border-gray-300 rounded-md overflow-hidden">
           <table className="w-full border-collapse text-sm md:text-base">
             <tbody className="divide-y divide-gray-200">

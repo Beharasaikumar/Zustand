@@ -1,6 +1,6 @@
 // UploadDocuments.tsx
 import React from "react";
-import { useFormStore, UploadedDocument } from "../store/UserProfileStore"; // Adjust path
+import { useFormStore, UploadedDocument } from "../store/UserProfileStore";  
 
 const documentList: Omit<UploadedDocument, 'file' | 'previewUrl'>[] = [
   { id: 1, name: "Eligibility Certificate issued by MCI/NMC for seat allotment" },
@@ -56,7 +56,7 @@ export default function UploadDocuments() {
         All uploads must be in PDF format & maximum size of 1MB
       </p>
 
-      {/* Documents Table */}
+    
       <div className="overflow-x-auto mb-6">
         <table className="w-full border-collapse border border-gray-300">
           <thead>
@@ -149,7 +149,7 @@ export default function UploadDocuments() {
 
   
 
-      {/* Note */}
+    
       <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
         <p className="text-sm">
           NOTE: Please review the details before submitting; No editing option will be available throughout the admission process.
@@ -159,7 +159,7 @@ export default function UploadDocuments() {
         </p>
       </div>
 
-      {/* Bottom Buttons */}
+      
       <div className="flex justify-between">
         <button
           onClick={() => setStep(5)}

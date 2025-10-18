@@ -1,8 +1,6 @@
-// Updated Store: UserProfileStore.tsx (extended with address fields in PersonalDetails)
-import { create } from "zustand";
+ import { create } from "zustand";
 
-// Existing interfaces remain the same...
-export interface PersonalDetails {
+ export interface PersonalDetails {
   name: string;
   fatherName: string;
   motherName: string;
@@ -16,8 +14,7 @@ export interface PersonalDetails {
   passportIssueDate: string;
   passportExpiry: string;
   bloodGroup: string;
-  // New: Address fields from screenshot
-  presentAddressSameAsPermanent: boolean;
+   presentAddressSameAsPermanent: boolean;
   presentHouseNoFlatNo: string;
   presentVillageWardName: string;
   presentLandmark: string;
@@ -81,7 +78,7 @@ export interface VisaDetails {
 }
 
 export interface VisaEntryRecord {
-  stayInAbroadIndia: string; // Abroad/India
+  stayInAbroadIndia: string;  
   visaNo: string;
   arrivalPlace: string;
   arrivalDate: string;
@@ -147,20 +144,20 @@ export interface EducationInfo {
   region: "Local" | "Non-Local";
 }
 
-// New: Document interfaces
+ 
 export interface UploadedDocument {
   id: number;
   name: string;
   file: File | null;
   previewUrl: string | null;
-  isPhotoSignature?: boolean; // Flag for photo/signature (JPG/PNG, 200KB)
+  isPhotoSignature?: boolean; 
 }
 
 export interface UploadDocuments {
   documents: UploadedDocument[];
   photo: UploadedDocument | null;
   signature: UploadedDocument | null;
-  isPreviewActive: boolean; // For the Preview Application button
+  isPreviewActive: boolean;  
 }
 
 interface FormStore {
@@ -171,7 +168,7 @@ interface FormStore {
   visaEntryForm: VisaEntryFormData;
   paymentDetails: PaymentDetails;
   receipt: Receipt | null;
-  uploadDocuments: UploadDocuments; // New
+  uploadDocuments: UploadDocuments;  
 
   setStep: (step: number) => void;
   updatePersonalDetails: (data: Partial<PersonalDetails>) => void;
@@ -186,7 +183,6 @@ interface FormStore {
   updateVisaEntryByYear: (yearIndex: number, data: Partial<YearlyVisaEntry>) => void;
   updateSemesterEntry: (yearIndex: number, semesterIndex: number, entryIndex: number, data: Partial<VisaEntryRecord>) => void;
   calculateCourseDuration: () => void;  
-  // New actions for uploads
   updateDocumentFile: (id: number, file: File) => void;
   updatePhoto: (file: File) => void;
   updateSignature: (file: File) => void;
@@ -292,7 +288,7 @@ export const useFormStore = create<FormStore>((set, get) => ({
     visaEntriesByYear: [], 
   },
 
-  // New: Initial upload state
+ 
   uploadDocuments: {
     documents: [
       { id: 1, name: "Eligibility Certificate issued by MCI/NMC for seat allotment", file: null, previewUrl: null },
@@ -314,7 +310,7 @@ export const useFormStore = create<FormStore>((set, get) => ({
     isPreviewActive: false,
   },
 
-  // Existing actions (unchanged)...
+  
   updateVisaDetails: (data) =>
     set((state) => ({
       visaEntryForm: {
@@ -590,6 +586,113 @@ export const useFormStore = create<FormStore>((set, get) => ({
 
   setPreviewActive: (active) => set((state) => ({ uploadDocuments: { ...state.uploadDocuments, isPreviewActive: active } })),
 
+  resetForm: () =>
+  set((state) => ({
+    step: 1,
+    personalDetails: {
+      name: "",
+      fatherName: "",
+      motherName: "",
+      dob: "",
+      gender: "",
+      nationality: "",
+      aadharNo: "",
+      mobile: "",
+      email: "",
+      passportNo: "",
+      passportIssueDate: "",
+      passportExpiry: "",
+      bloodGroup: "",
+      presentAddressSameAsPermanent: false,
+      presentHouseNoFlatNo: "",
+      presentVillageWardName: "",
+      presentLandmark: "",
+      presentState: "",
+      presentDistrict: "",
+      presentPinCode: "",
+      permanentHouseNoFlatNo: "",
+      permanentVillageWardName: "",
+      permanentLandmark: "",
+      permanentState: "",
+      permanentDistrict: "",
+      permanentPinCode: "",
+    },
+    medicalQualification: {
+      medicalQualification: {
+        candidateName: "",
+        universityName: "",
+        collegeName: "",
+        universityCountry: "",
+        degreeIssuedDate: "",
+        courseStartDate: "",
+        courseEndDate: "",
+      },
+      intermediate: {
+        board: "",
+        rollNo: "",
+        year: "",
+        month: "",
+        totalMarks: "",
+        securedMarks: "",
+        percentage: "",
+      },
+      screeningTest: {
+        hallTicket: "",
+        passedYear: "",
+        passedMonth: "",
+        obtainedMarks: "",
+      },
+    },
+    educationInfo: {
+      educationalDetails: state.educationInfo.educationalDetails.map((edu) => ({
+        ...edu,
+        year: "",
+        state: "",
+        district: "",
+        institute: "",
+        certificateFile: null,
+      })),
+      region: "Local",
+    },
+    paymentDetails: {
+      method: "",
+      agreeTerms: false,
+      totalAmount: 2000,
+      transactionStatus: "",
+      transactionId: "",
+    },
+    receipt: null,
+    visaEntryForm: {
+      visaDetails: {
+        country: "",
+        admissionDate: "",
+        courseCompletionDate: "",
+        totalCourseDuration: "",
+        arrivalDateAfterCompletion: "",
+        internshipDetails: {
+          isAbroad: false,
+          startDate: "",
+          endDate: "",
+        },
+      },
+      visaEntriesByYear: [],
+    },
+    uploadDocuments: {
+      documents: state.uploadDocuments.documents.map((doc) => ({
+        ...doc,
+        file: null,
+        previewUrl: null,
+      })),
+      photo: state.uploadDocuments.photo
+        ? { ...state.uploadDocuments.photo, file: null, previewUrl: null }
+        : null,
+      signature: state.uploadDocuments.signature
+        ? { ...state.uploadDocuments.signature, file: null, previewUrl: null }
+        : null,
+      isPreviewActive: false,
+    },
+  })),
+  
   clearAllUploads: () => set((state) => ({
     uploadDocuments: {
       ...state.uploadDocuments,
